@@ -12,7 +12,7 @@
             background: linear-gradient(to right top, #6EE7B7, #3B82F6, #9333EA);
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* Make body a column flexbox */
+            flex-direction: column;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -25,20 +25,21 @@
             width: 100%;
             text-align: center;
             margin: 0 auto;
+            transition: padding 0.2s;
         }
         textarea {
             resize: vertical;
             min-height: 200px;
             font-family: monospace;
-            background-color: #f8fafc; /* Light gray background for textarea */
-            border: 1px solid #cbd5e1; /* Light border */
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
         }
         button {
             transition: all 0.2s ease-in-out;
-            background: linear-gradient(to right, #3B82F6, #9333EA); /* Button gradient */
+            background: linear-gradient(to right, #3B82F6, #9333EA);
             color: rgb(48, 1, 216);
             padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem; /* Rounded button */
+            border-radius: 0.75rem;
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
@@ -48,18 +49,18 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
         .message-box {
-            background-color: #dbeafe; /* Light blue for messages */
-            color: #1e40af; /* Darker blue text */
+            background-color: #dbeafe;
+            color: #1e40af;
             padding: 1rem;
             border-radius: 0.75rem;
             margin-top: 1.5rem;
             border: 1px solid #93c5fd;
-            display: none; /* Hidden by default */
-            word-wrap: break-word; /* Ensure long messages wrap */
+            display: none;
+            word-wrap: break-word;
             text-align: left;
         }
         .query-example {
-            background-color: #f0f9ff; /* Very light blue for examples */
+            background-color: #f0f9ff;
             border: 1px solid #bfdbfe;
             border-radius: 0.5rem;
             padding: 1rem;
@@ -69,15 +70,69 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
-            white-space: pre-wrap; /* Preserve whitespace and wrap long lines */
-            word-break: break-all; /* Break long words */
+            white-space: pre-wrap;
+            word-break: break-all;
         }
         .query-example:hover {
-            background-color: #e0f2fe; /* Slightly darker on hover */
+            background-color: #e0f2fe;
         }
         footer {
-            margin-top: auto; /* Push footer to the bottom */
+            margin-top: auto;
             padding: 1rem 0;
+        }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 640px) {
+            body {
+                padding: 8px;
+            }
+            .container {
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem !important;
+            }
+            .text-2xl {
+                font-size: 1.2rem !important;
+            }
+            .text-lg, .text-md {
+                font-size: 1rem !important;
+            }
+            textarea {
+                min-height: 120px;
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+            button {
+                width: 100% !important;
+                padding: 0.65rem 1rem;
+                font-size: 1rem;
+            }
+            .query-example {
+                font-size: 0.78rem;
+                padding: 0.65rem;
+            }
+            .message-box {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 420px) {
+            .container {
+                padding: 0.5rem;
+                border-radius: 0.6rem;
+            }
+            h1 {
+                font-size: 1.2rem !important;
+            }
+            .query-example {
+                font-size: 0.68rem;
+                padding: 0.45rem;
+            }
         }
     </style>
 </head>
@@ -163,7 +218,6 @@ SELECT * FROM duties WHERE Code = 3;</code></pre>
                     <span class="font-semibold text-blue-700">Task 1.View.iii:</span> Extract records of athletics or basketball
                     <pre><code>SELECT * FROM games WHERE Game = 'athletics' OR Game = 'basketball';</code></pre>
                 </div>
-
                 <!-- Task 2: Create a database, two tables (Student Database) -->
                 <div class="query-example" data-query="CREATE DATABASE Student;">
                     <span class="font-semibold text-blue-700">Task 2.a.i:</span> Create 'Student' database
@@ -215,7 +269,6 @@ INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2004, 54
                     <span class="font-semibold text-blue-700">Task 2.c.iv:</span> Calculate average marks
                     <pre><code>UPDATE stMarks SET Avg = (Maths + Biology + Chemistry + Physics) / 4;</code></pre>
                 </div>
-
                 <!-- Task 3: Create a database called patient, two table pDetails and pAilments, insert records, extract records. -->
                 <div class="query-example" data-query="CREATE DATABASE patient;">
                     <span class="font-semibold text-blue-700">Task 3.a.i:</span> Create 'patient' database
@@ -274,10 +327,9 @@ INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');</c
             </div>
         </div>
     </div>
-           <footer style="text-align: center;" class="mt-10 text-gray-600">
-            <p>&copy; 2025 SQL Query Tool. All rights reserved.,,,,By Agatha </p>
-        </footer>
-    
+    <footer style="text-align: center;" class="mt-10 text-gray-600">
+        <p>&copy; 2025 SQL Query Tool. All rights reserved.,,,,By Agatha </p>
+    </footer>
     <script>
         // Get references to the textarea, copy button, and message box
         const sqlQueryInput = document.getElementById('sqlQueryInput');
@@ -289,40 +341,30 @@ INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');</c
         // Function to display a message in the message box
         function showMessage(message, type = 'info') {
             messageText.textContent = message;
-            messageBox.style.display = 'block'; // Show the message box
-
-            // Optional: Add styling based on message type (e.g., 'success', 'error')
+            messageBox.style.display = 'block';
             if (type === 'success') {
-                messageBox.style.backgroundColor = '#dbeafe'; // Light blue
-                messageBox.style.color = '#1e40af'; // Dark blue
+                messageBox.style.backgroundColor = '#dbeafe';
+                messageBox.style.color = '#1e40af';
                 messageBox.style.borderColor = '#93c5fd';
             } else if (type === 'error') {
-                messageBox.style.backgroundColor = '#fee2e2'; // Light red
-                messageBox.style.color = '#991b1b'; // Dark red
+                messageBox.style.backgroundColor = '#fee2e2';
+                messageBox.style.color = '#991b1b';
                 messageBox.style.borderColor = '#fca5a5';
-            } else { // Default info
+            } else {
                 messageBox.style.backgroundColor = '#dbeafe';
                 messageBox.style.color = '#1e40af';
                 messageBox.style.borderColor = '#93c5fd';
             }
-
-            // Hide the message after 3 seconds
             setTimeout(() => {
                 messageBox.style.display = 'none';
             }, 3000);
         }
-           
-        // Add event listener to the copy button
         copyButton.addEventListener('click', () => {
-            const query = sqlQueryInput.value.trim(); // Get the query and remove leading/trailing whitespace
-
+            const query = sqlQueryInput.value.trim();
             if (query) {
-                // Select the text in the textarea
                 sqlQueryInput.select();
-                sqlQueryInput.setSelectionRange(0, 99999); // For mobile devices
-
+                sqlQueryInput.setSelectionRange(0, 99999);
                 try {
-                    // Copy the text to the clipboard using document.execCommand
                     document.execCommand('copy');
                     showMessage('Query copied to clipboard!', 'success');
                 } catch (err) {
@@ -333,8 +375,6 @@ INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');</c
                 showMessage('Please paste a SQL query into the text area first.', 'info');
             }
         });
-
-        // Add event listeners to example queries
         exampleQueriesContainer.addEventListener('click', (event) => {
             const exampleDiv = event.target.closest('.query-example');
             if (exampleDiv) {
