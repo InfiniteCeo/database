@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFINITE PLC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right top, #6EE7B7, #3B82F6, #9333EA);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Make body a column flexbox */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 2.5rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 200px;
+            font-family: monospace;
+            background-color: #f8fafc; /* Light gray background for textarea */
+            border: 1px solid #cbd5e1; /* Light border */
+        }
+        button {
+            transition: all 0.2s ease-in-out;
+            background: linear-gradient(to right, #3B82F6, #9333EA); /* Button gradient */
+            color: rgb(48, 1, 216);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem; /* Rounded button */
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .message-box {
+            background-color: #dbeafe; /* Light blue for messages */
+            color: #1e40af; /* Darker blue text */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            border: 1px solid #93c5fd;
+            display: none; /* Hidden by default */
+            word-wrap: break-word; /* Ensure long messages wrap */
+            text-align: left;
+        }
+        .query-example {
+            background-color: #f0f9ff; /* Very light blue for examples */
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            white-space: pre-wrap; /* Preserve whitespace and wrap long lines */
+            word-break: break-all; /* Break long words */
+        }
+        .query-example:hover {
+            background-color: #e0f2fe; /* Slightly darker on hover */
+        }
+        footer {
+            margin-top: auto; /* Push footer to the bottom */
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-6 text-gray-800">SQL Query Paste Tool</h1>
+        <p class="text-lg text-gray-600 mb-8">Paste your SQL queries below and use the "Copy" button to easily copy them.</p>
+
+        <textarea
+            id="sqlQueryInput"
+            class="w-full p-4 mb-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Paste your SQL query here..."
+        ></textarea>
+
+        <button
+            id="copyButton"
+            class="w-full md:w-auto px-6 py-3 text-black font-semibold rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+            Copy Query
+        </button>
+
+        <div id="messageBox" class="message-box">
+            <p id="messageText"></p>
+        </div>
+
+        <div class="mt-10">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Example SQL Queries</h2>
+            <p class="text-md text-gray-600 mb-6">Click on any query to load it into the text area above.</p>
+
+            <div id="exampleQueriesContainer">
+                <!-- Task 1: Installation of MS SQL server (Database and Table Creation, Data Insertion, Views) -->
+                <div class="query-example" data-query="CREATE DATABASE sports;">
+                    <span class="font-semibold text-blue-700">Task 1.i:</span> Create 'sports' database
+                    <pre><code>CREATE DATABASE sports;</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE TABLE games (Code INT, Name VARCHAR(255), Game VARCHAR(255), gender CHAR(1));">
+                    <span class="font-semibold text-blue-700">Task 1.i:</span> Create 'games' table
+                    <pre><code>CREATE TABLE games (Code INT, Name VARCHAR(255), Game VARCHAR(255), gender CHAR(1));</code></pre>
+                </div>
+                <div class="query-example" data-query="INSERT INTO games (Code, Name, Game, gender) VALUES (1, 'Mesh', 'athletics', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (2, 'Rod', 'football', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (3, 'Lim', 'basketball', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (4, 'Lon', 'table tennis', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (5, 'Tin', 'restling', 'f');">
+                    <span class="font-semibold text-blue-700">Task 1.ii:</span> Insert records into 'games' table
+                    <pre><code>INSERT INTO games (Code, Name, Game, gender) VALUES (1, 'Mesh', 'athletics', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (2, 'Rod', 'football', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (3, 'Lim', 'basketball', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (4, 'Lon', 'table tennis', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (5, 'Tin', 'restling', 'f');</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE TABLE duties (Code INT, Institution VARCHAR(255), title VARCHAR(255));">
+                    <span class="font-semibold text-blue-700">Task 1.a.i:</span> Create 'duties' table
+                    <pre><code>CREATE TABLE duties (Code INT, Institution VARCHAR(255), title VARCHAR(255));</code></pre>
+                </div>
+                <div class="query-example" data-query="INSERT INTO duties (Code, Institution, title) VALUES (1, 'Nima', 'Coach');
+INSERT INTO duties (Code, Institution, title) VALUES (2, 'Gosh', 'referee');
+INSERT INTO duties (Code, Institution, title) VALUES (3, 'Tumo', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (4, 'Riwa', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (5, 'Zilo', 'player');">
+                    <span class="font-semibold text-blue-700">Task 1.a.ii:</span> Insert records into 'duties' table
+                    <pre><code>INSERT INTO duties (Code, Institution, title) VALUES (1, 'Nima', 'Coach');
+INSERT INTO duties (Code, Institution, title) VALUES (2, 'Gosh', 'referee');
+INSERT INTO duties (Code, Institution, title) VALUES (3, 'Tumo', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (4, 'Riwa', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (5, 'Zilo', 'player');</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE VIEW AllGames AS SELECT * FROM games;">
+                    <span class="font-semibold text-blue-700">Task 1.View.i:</span> Create view 'AllGames'
+                    <pre><code>CREATE VIEW AllGames AS SELECT * FROM games;</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT * FROM AllGames;">
+                    <span class="font-semibold text-blue-700">Task 1.View.i:</span> Extract all records from 'AllGames' view
+                    <pre><code>SELECT * FROM AllGames;</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT * FROM games WHERE Code = 3;
+SELECT * FROM duties WHERE Code = 3;">
+                    <span class="font-semibold text-blue-700">Task 1.View.ii:</span> Extract details for Code 3 from 'games' and 'duties'
+                    <pre><code>SELECT * FROM games WHERE Code = 3;
+SELECT * FROM duties WHERE Code = 3;</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT * FROM games WHERE Game = 'athletics' OR Game = 'basketball';">
+                    <span class="font-semibold text-blue-700">Task 1.View.iii:</span> Extract records of athletics or basketball
+                    <pre><code>SELECT * FROM games WHERE Game = 'athletics' OR Game = 'basketball';</code></pre>
+                </div>
+
+                <!-- Task 2: Create a database, two tables (Student Database) -->
+                <div class="query-example" data-query="CREATE DATABASE Student;">
+                    <span class="font-semibold text-blue-700">Task 2.a.i:</span> Create 'Student' database
+                    <pre><code>CREATE DATABASE Student;</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE TABLE stDetails (admNo INT PRIMARY KEY, Name VARCHAR(255), Gender CHAR(1), Address VARCHAR(255), Town VARCHAR(255), Class VARCHAR(255));
+CREATE TABLE stMarks (admNo INT PRIMARY KEY, Maths INT, Biology INT, Chemistry INT, Physics INT);">
+                    <span class="font-semibold text-blue-700">Task 2.a.ii:</span> Create 'stDetails' & 'stMarks' tables
+                    <pre><code>CREATE TABLE stDetails (admNo INT PRIMARY KEY, Name VARCHAR(255), Gender CHAR(1), Address VARCHAR(255), Town VARCHAR(255), Class VARCHAR(255));
+CREATE TABLE stMarks (admNo INT PRIMARY KEY, Maths INT, Biology INT, Chemistry INT, Physics INT);</code></pre>
+                </div>
+                <div class="query-example" data-query="INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2000, 'Janet', 'F', 'P.o.Box 100', 'Kitale', 'F4 South');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2001, 'Tabutany', 'F', 'P.0.Box 78', 'Eldoret', 'F4 North');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2002, 'Were', 'M', 'P.o.Box 201', 'Nakuru', 'F4 West');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2003, 'Mambu', 'M', 'P.o.Box 43', 'Eldoret', 'F4 East');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2004, 'Mercy', 'F', 'P.o.Box 20', 'Nakuru', 'F4 East');
+
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2000, 56, 45, 73, 66);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2001, 87, 54, 80, 55);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2002, 90, 78, 85, 74);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2003, 87, 67, 83, 62);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2004, 54, 72, 70, 68);">
+                    <span class="font-semibold text-blue-700">Task 2.b:</span> Insert records into 'stDetails' & 'stMarks'
+                    <pre><code>INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2000, 'Janet', 'F', 'P.o.Box 100', 'Kitale', 'F4 South');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2001, 'Tabutany', 'F', 'P.0.Box 78', 'Eldoret', 'F4 North');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2002, 'Were', 'M', 'P.o.Box 201', 'Nakuru', 'F4 West');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2003, 'Mambu', 'M', 'P.o.Box 43', 'Eldoret', 'F4 East');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2004, 'Mercy', 'F', 'P.o.Box 20', 'Nakuru', 'F4 East');
+
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2000, 56, 45, 73, 66);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2001, 87, 54, 80, 55);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2002, 90, 78, 85, 74);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2003, 87, 67, 83, 62);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2004, 54, 72, 70, 68);</code></pre>
+                </div>
+                <div class="query-example" data-query="ALTER TABLE stMarks ADD Total INT;">
+                    <span class="font-semibold text-blue-700">Task 2.c.i:</span> Add Total field to stMarks
+                    <pre><code>ALTER TABLE stMarks ADD Total INT;</code></pre>
+                </div>
+                <div class="query-example" data-query="ALTER TABLE stMarks ADD Avg DECIMAL(10, 2);">
+                    <span class="font-semibold text-blue-700">Task 2.c.ii:</span> Add Avg field to stMarks
+                    <pre><code>ALTER TABLE stMarks ADD Avg DECIMAL(10, 2);</code></pre>
+                </div>
+                <div class="query-example" data-query="UPDATE stMarks SET Total = Maths + Biology + Chemistry + Physics;">
+                    <span class="font-semibold text-blue-700">Task 2.c.iii:</span> Calculate sum of marks
+                    <pre><code>UPDATE stMarks SET Total = Maths + Biology + Chemistry + Physics;</code></pre>
+                </div>
+                <div class="query-example" data-query="UPDATE stMarks SET Avg = (Maths + Biology + Chemistry + Physics) / 4;">
+                    <span class="font-semibold text-blue-700">Task 2.c.iv:</span> Calculate average marks
+                    <pre><code>UPDATE stMarks SET Avg = (Maths + Biology + Chemistry + Physics) / 4;</code></pre>
+                </div>
+
+                <!-- Task 3: Create a database called patient, two table pDetails and pAilments, insert records, extract records. -->
+                <div class="query-example" data-query="CREATE DATABASE patient;">
+                    <span class="font-semibold text-blue-700">Task 3.a.i:</span> Create 'patient' database
+                    <pre><code>CREATE DATABASE patient;</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE TABLE pDetails (patNo INT PRIMARY KEY, name VARCHAR(255), gender CHAR(1), residence VARCHAR(255), age INT);
+CREATE TABLE pAilments (patNo INT, ailment VARCHAR(255), status VARCHAR(255), FOREIGN KEY (patNo) REFERENCES pDetails(patNo));">
+                    <span class="font-semibold text-blue-700">Task 3.a.ii:</span> Create 'pDetails' & 'pAilments' tables
+                    <pre><code>CREATE TABLE pDetails (patNo INT PRIMARY KEY, name VARCHAR(255), gender CHAR(1), residence VARCHAR(255), age INT);
+CREATE TABLE pAilments (patNo INT, ailment VARCHAR(255), status VARCHAR(255), FOREIGN KEY (patNo) REFERENCES pDetails(patNo));</code></pre>
+                </div>
+                <div class="query-example" data-query="INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4550, 'Neshe', 'M', 'Umoja', 34);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4567, 'Mengo', 'F', 'Kajiado', 50);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (7894, 'Wira', 'F', 'Athi River', 45);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (5434, 'Elijah', 'F', 'Nakuru', 23);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (3233, 'Mawingu', 'M', 'Limuru', 12);
+
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4550, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4567, 'Typhoid', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (7894, 'TB', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (5434, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');">
+                    <span class="font-semibold text-blue-700">Task 3.b:</span> Insert records into pDetails & pAilments
+                    <pre><code>INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4550, 'Neshe', 'M', 'Umoja', 34);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4567, 'Mengo', 'F', 'Kajiado', 50);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (7894, 'Wira', 'F', 'Athi River', 45);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (5434, 'Elijah', 'F', 'Nakuru', 23);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (3233, 'Mawingu', 'M', 'Limuru', 12);
+
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4550, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4567, 'Typhoid', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (7894, 'TB', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (5434, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'M' AND p.residence = 'Umoja' AND a.ailment = 'Malaria';">
+                    <span class="font-semibold text-blue-700">Task 3.c.a:</span> Extract male patients from Umoja with Malaria
+                    <pre><code>SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'M' AND p.residence = 'Umoja' AND a.ailment = 'Malaria';</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'F' AND a.ailment = 'Typhoid';">
+                    <span class="font-semibold text-blue-700">Task 3.c.b:</span> Extract female patients with Typhoid
+                    <pre><code>SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'F' AND a.ailment = 'Typhoid';</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'Malaria' OR a.ailment = 'Typhoid';">
+                    <span class="font-semibold text-blue-700">Task 3.c.c:</span> Extract patients with Malaria or Typhoid
+                    <pre><code>SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'Malaria' OR a.ailment = 'Typhoid';</code></pre>
+                </div>
+                <div class="query-example" data-query="SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'TB' AND a.status = 'severe';">
+                    <span class="font-semibold text-blue-700">Task 3.c.d:</span> Extract patients with severe TB
+                    <pre><code>SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'TB' AND a.status = 'severe';</code></pre>
+                </div>
+                <div class="query-example" data-query="CREATE INDEX idx_patNo ON pDetails (patNo);">
+                    <span class="font-semibold text-blue-700">Task 3.c.e:</span> Create index on patNo
+                    <pre><code>CREATE INDEX idx_patNo ON pDetails (patNo);</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+           <footer style="text-align: center;" class="mt-10 text-gray-600">
+            <p>&copy; 2025 SQL Query Tool. All rights reserved.,,,,By Agatha </p>
+        </footer>
+    
+    <script>
+        // Get references to the textarea, copy button, and message box
+        const sqlQueryInput = document.getElementById('sqlQueryInput');
+        const copyButton = document.getElementById('copyButton');
+        const messageBox = document.getElementById('messageBox');
+        const messageText = document.getElementById('messageText');
+        const exampleQueriesContainer = document.getElementById('exampleQueriesContainer');
+
+        // Function to display a message in the message box
+        function showMessage(message, type = 'info') {
+            messageText.textContent = message;
+            messageBox.style.display = 'block'; // Show the message box
+
+            // Optional: Add styling based on message type (e.g., 'success', 'error')
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#dbeafe'; // Light blue
+                messageBox.style.color = '#1e40af'; // Dark blue
+                messageBox.style.borderColor = '#93c5fd';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#fee2e2'; // Light red
+                messageBox.style.color = '#991b1b'; // Dark red
+                messageBox.style.borderColor = '#fca5a5';
+            } else { // Default info
+                messageBox.style.backgroundColor = '#dbeafe';
+                messageBox.style.color = '#1e40af';
+                messageBox.style.borderColor = '#93c5fd';
+            }
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 3000);
+        }
+           
+        // Add event listener to the copy button
+        copyButton.addEventListener('click', () => {
+            const query = sqlQueryInput.value.trim(); // Get the query and remove leading/trailing whitespace
+
+            if (query) {
+                // Select the text in the textarea
+                sqlQueryInput.select();
+                sqlQueryInput.setSelectionRange(0, 99999); // For mobile devices
+
+                try {
+                    // Copy the text to the clipboard using document.execCommand
+                    document.execCommand('copy');
+                    showMessage('Query copied to clipboard!', 'success');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    showMessage('Failed to copy query. Please try again manually.', 'error');
+                }
+            } else {
+                showMessage('Please paste a SQL query into the text area first.', 'info');
+            }
+        });
+
+        // Add event listeners to example queries
+        exampleQueriesContainer.addEventListener('click', (event) => {
+            const exampleDiv = event.target.closest('.query-example');
+            if (exampleDiv) {
+                const queryToLoad = exampleDiv.dataset.query;
+                sqlQueryInput.value = queryToLoad;
+                showMessage('Example query loaded into the text area.', 'info');
+            }
+        });
+    </script>
+</body>
+</html>
