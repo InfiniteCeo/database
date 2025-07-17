@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>other tasks</title>
+    <!-- Link to Inter font from Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to Tailwind CSS CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base body styles, applying Inter font and a subtle background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Container for the main content, with a white background and shadow */
+        .content-container {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Headings and paragraphs */
+        h1, h2, h3, h4 {
+            color: #1a202c; /* Dark text for headings */
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #4a5568; /* Slightly lighter text for paragraphs */
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        pre {
+            background-color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #2d3748;
+        }
+        .section-header {
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .task-subsection {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid #3B82F6;
+        }
+
+        /* Dark Mode Styles */
+        html.dark body {
+            background-color: #1a202c;
+        }
+        html.dark .content-container {
+            background-color: #2d3748;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4 {
+            color: #e2e8f0;
+        }
+        html.dark p, html.dark ul, html.dark li {
+            color: #cbd5e1;
+        }
+        html.dark pre {
+            background-color: #1f2937;
+            color: #e2e8f0;
+        }
+        html.dark .section-header {
+            border-bottom-color: #4a5568;
+        }
+        html.dark .task-subsection {
+            border-left-color: #6366f1;
+        }
+        html.dark .text-gray-800 { color: #e2e8f0; }
+        html.dark .text-gray-600 { color: #cbd5e1; }
+        html.dark .text-blue-700 { color: #93c5fd; }
+        html.dark .text-red-600 { color: #f87171; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .content-container {
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .content-container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            h3 {
+                font-size: 1.1rem;
+            }
+            p, ul, li, pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="content-container">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">THEORY part</h1>
+            <p class="text-lg text-gray-600">This document provides theoretical explanations and practical SQL implementations as per Observation Checklist and Candidate Practical tasks.</p>
+        </header>
+
+        <!-- Task 1: Installation of MS SQL server/Management Studio (SSMS) -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 1: Installation of MS SQL Server / Management Studio (SSMS)</h2>
+            <p>This task involves setting up the necessary database environment. While there are no SQL queries for installation itself, it's a prerequisite for all subsequent tasks.</p>
+            <h3 class="text-xl font-medium mt-4 task-subsection">Activities:</h3>
+            <ul>
+                <li><strong>i. Download MS SQL server/Management Studio (SSMS):</strong> Obtain the installation files from Microsoft's official website.</li>
+                <li><strong>ii. Install MS SQL server/Management Studio:</strong> Follow the installation wizard, selecting appropriate components and configurations (e.g., SQL Server Express for development, SQL Server Management Studio for GUI tools).</li>
+            </ul>
+        </section>
+
+        <!-- Task 2: Design the database using Entity Modelling -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 2: Database Design using Entity Modelling</h2>
+            <p>Entity-Relationship (ER) modelling is a high-level conceptual data model diagram. ER diagrams are used to represent the overall logical structure of a database graphically. They are a visual way to describe the data that will be stored in a database and the relationships between pieces of data.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Entity Relationship Components:</h3>
+            <ul>
+                <li><strong>Entities:</strong> Represent real-world objects or concepts (e.g., Student, Course, Patient). They are typically represented as rectangles.</li>
+                <li><strong>Attributes:</strong> Properties or characteristics of an entity (e.g., Student Name, Course Code, Patient Age). They are represented as ovals connected to entities.</li>
+                <li><strong>Relationships:</strong> Associations between two or more entities (e.g., a Student *enrolls in* a Course, a Patient *suffers from* an Ailment). They are represented as diamonds.</li>
+                <li><strong>Cardinality:</strong> Defines the number of instances of one entity that can be associated with the number of instances of another entity (e.g., One-to-One, One-to-Many, Many-to-Many).</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Implementing Relationships in Tables:</h3>
+            <p>Relationships are implemented in relational databases primarily through the use of Primary Keys (PK) and Foreign Keys (FK).</p>
+            <ul>
+                <li><strong>Primary Key (PK):</strong> A unique identifier for each record in a table.</li>
+                <li><strong>Foreign Key (FK):</strong> A field in one table that uniquely identifies a row of another table. The foreign key is defined in a second table, but it refers to the primary key in the first table. It establishes a link between the two tables.</li>
+            </ul>
+            <p><strong>Example (from Patient Database):</strong></p>
+            <pre><code>
+CREATE TABLE pDetails (
+    patNo INT PRIMARY KEY,
+    name VARCHAR(255),
+    gender CHAR(1),
+    residence VARCHAR(255),
+    age INT
+);
+
+CREATE TABLE pAilments (
+    patNo INT,
+    ailment VARCHAR(255),
+    status VARCHAR(255),
+    FOREIGN KEY (patNo) REFERENCES pDetails(patNo)
+);
+            </code></pre>
+            <p>In this example, `patNo` in `pDetails` is the Primary Key. `patNo` in `pAilments` is a Foreign Key, linking each ailment record to a specific patient in `pDetails`.</p>
+        </section>
+
+        <!-- Task 3 (Conceptual): Normalization Rules -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 3 (Conceptual): Normalization Rules</h2>
+            <p>Database normalization is the process of organizing the columns and tables of a relational database to minimize data redundancy and improve data integrity. It involves breaking down a large table into smaller, less redundant tables and defining relationships between them.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Key Normalization Forms:</h3>
+            <ul>
+                <li><strong>First Normal Form (1NF):</strong>
+                    <ul>
+                        <li>Each column must contain atomic (indivisible) values.</li>
+                        <li>There are no repeating groups of columns.</li>
+                    </ul>
+                </li>
+                <li><strong>Second Normal Form (2NF):</strong>
+                    <ul>
+                        <li>Must be in 1NF.</li>
+                        <li>All non-key attributes must be fully functionally dependent on the primary key (no partial dependencies).</li>
+                    </ul>
+                </li>
+                <li><strong>Third Normal Form (3NF):</strong>
+                    <ul>
+                        <li>Must be in 2NF.</li>
+                        <li>No transitive dependencies (non-key attributes should not be dependent on other non-key attributes).</li>
+                    </ul>
+                </li>
+                <li><strong>Boyce-Codd Normal Form (BCNF):</strong>
+                    <ul>
+                        <li>A stricter version of 3NF. For every non-trivial functional dependency X -> Y, X must be a superkey.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Task 4: Create SQL DML Queries (Select, Insert, Delete, Update) -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 4: Create SQL DML Queries (Select, Insert, Delete, Update)</h2>
+            <p>Data Manipulation Language (DML) statements are used for managing data within schema objects. These commands affect records in the database.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation:</h3>
+
+            <h4>Create 'sports' database and 'games' table:</h4>
+            <pre><code>
+CREATE DATABASE sports;
+USE sports;
+CREATE TABLE games (Code INT, Name VARCHAR(255), Game VARCHAR(255), gender CHAR(1));
+            </code></pre>
+
+            <h4>Insert records into 'games' table:</h4>
+            <pre><code>
+USE sports;
+INSERT INTO games (Code, Name, Game, gender) VALUES (1, 'Mesh', 'athletics', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (2, 'Rod', 'football', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (3, 'Lim', 'basketball', 'm');
+INSERT INTO games (Code, Name, Game, gender) VALUES (4, 'Lon', 'table tennis', 'f');
+INSERT INTO games (Code, Name, Game, gender) VALUES (5, 'Tin', 'restling', 'f');
+            </code></pre>
+
+            <h4>Create 'duties' table:</h4>
+            <pre><code>
+USE sports;
+CREATE TABLE duties (Code INT, Institution VARCHAR(255), title VARCHAR(255));
+            </code></pre>
+
+            <h4>Insert records into 'duties' table:</h4>
+            <pre><code>
+USE sports;
+INSERT INTO duties (Code, Institution, title) VALUES (1, 'Nima', 'Coach');
+INSERT INTO duties (Code, Institution, title) VALUES (2, 'Gosh', 'referee');
+INSERT INTO duties (Code, Institution, title) VALUES (3, 'Tumo', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (4, 'Riwa', 'player');
+INSERT INTO duties (Code, Institution, title) VALUES (5, 'Zilo', 'player');
+            </code></pre>
+
+            <h4>Update records (Example: Update a game name):</h4>
+            <pre><code>
+USE sports;
+UPDATE games SET Game = 'swimming' WHERE Code = 5;
+            </code></pre>
+
+            <h4>Delete records (Example: Delete a duty record):</h4>
+            <pre><code>
+USE sports;
+DELETE FROM duties WHERE Code = 5;
+            </code></pre>
+
+            <h4>Select all records from 'games' table:</h4>
+            <pre><code>
+USE sports;
+SELECT * FROM games;
+            </code></pre>
+        </section>
+
+        <!-- Task 5: Create SQL DDL Queries (Alter, Drop, Truncate) -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 5: Create SQL DDL Queries (Alter, Drop, Truncate)</h2>
+            <p>Data Definition Language (DDL) statements are used to define or modify the structure of your database. These commands deal with the database schema itself.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation:</h3>
+
+            <h4>Alter command (Add a column to 'games' table):</h4>
+            <pre><code>
+USE sports;
+ALTER TABLE games ADD Location VARCHAR(255);
+            </code></pre>
+
+            <h4>Truncate command (Remove all data from 'duties' table, keeping structure):</h4>
+            <pre><code>
+USE sports;
+TRUNCATE TABLE duties;
+            </code></pre>
+
+            <h4>Drop command (Remove 'duties' table completely):</h4>
+            <pre><code>
+USE sports;
+DROP TABLE duties;
+            </code></pre>
+        </section>
+
+        <!-- Task 6: Apply Right Join and Left Join to Database Tables -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 6: Apply Right Join and Left Join to Database Tables</h2>
+            <p>SQL JOIN clauses are used to combine rows from two or more tables, based on a related column between them.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Types of Joins:</h3>
+            <ul>
+                <li><strong>INNER JOIN:</strong> Returns records that have matching values in both tables.</li>
+                <li><strong>LEFT (OUTER) JOIN:</strong> Returns all records from the left table, and the matching records from the right table. If there is no match, the result is NULL from the right side.</li>
+                <li><strong>RIGHT (OUTER) JOIN:</strong> Returns all records from the right table, and the matching records from the left table. If there is no match, the result is NULL from the left side.</li>
+                <li><strong>FULL (OUTER) JOIN:</strong> Returns all records when there is a match in either left or right table records.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation (using 'games' and 'duties' tables):</h3>
+            <p>Assuming 'games' and 'duties' tables are populated as in Task 4, and 'Code' is the linking column.</p>
+
+            <h4>Left Join example:</h4>
+            <pre><code>
+USE sports;
+SELECT g.Name, g.Game, d.title
+FROM games g
+LEFT JOIN duties d ON g.Code = d.Code;
+            </code></pre>
+
+            <h4>Right Join example:</h4>
+            <pre><code>
+USE sports;
+SELECT g.Name, g.Game, d.title
+FROM games g
+RIGHT JOIN duties d ON g.Code = d.Code;
+            </code></pre>
+
+            <h4>Inner Join example (most common):</h4>
+            <pre><code>
+USE sports;
+SELECT g.Name, g.Game, d.title
+FROM games g
+INNER JOIN duties d ON g.Code = d.Code;
+            </code></pre>
+        </section>
+
+        <!-- Task 8: Apply OOP to Databases -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 8: Apply OOP to Databases</h2>
+            <p>Applying Object-Oriented Programming (OOP) concepts to databases involves managing data in a way that aligns with the principles of object-oriented languages (encapsulation, inheritance, polymorphism).</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Object-Oriented Databases (OODBs) / Object Databases (ODBs):</h3>
+            <ul>
+                <li><strong>Concept:</strong> Databases designed to store and manage data as objects directly. They inherently support OOP principles.</li>
+                <li><strong>Implementation:</strong> Data is stored as instances of classes, complete with their attributes and methods. Relationships between data are handled via object references.</li>
+                <li><strong>Manipulation:</strong> Objects are directly manipulated in the database, reflecting their state and behavior as defined in the class.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Object-Relational Mapping (ORM):</h3>
+            <p>The more common approach for relational databases. An ORM provides a bridge between object-oriented programming languages and relational databases.</p>
+            <ul>
+                <li><strong>Mapping:</strong> Translates objects in your programming language (e.g., a `Patient` class) to rows in database tables (e.g., `pDetails` table) and vice-versa.</li>
+                <li><strong>Abstraction:</strong> Allows developers to interact with database data using object-oriented code, abstracting away raw SQL queries.</li>
+                <li><strong>Examples:</strong> Entity Framework (.NET), Hibernate (Java), SQLAlchemy (Python).</li>
+            </ul>
+        </section>
+
+        <!-- Task 9: Apply Inheritance in Databases -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 9: Apply Inheritance in Databases</h2>
+            <p>Inheritance in databases, particularly in the context of OOP, refers to how a hierarchy of classes (where one class inherits properties from another) is represented and managed within a database system.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Inheritance in Object-Oriented Databases (OODBs):</h3>
+            <ul>
+                <li>OODBs natively support inheritance. A subclass object automatically inherits the attributes and methods of its superclass.</li>
+                <li>This direct mapping simplifies the representation of complex hierarchies.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Inheritance with Object-Relational Mapping (ORM):</h3>
+            <p>When using an ORM with a relational database, inheritance is typically handled using strategies:</p>
+            <ul>
+                <li><strong>Table Per Hierarchy (TPH):</strong> All classes in an inheritance hierarchy are mapped to a single table. A 'discriminator' column indicates the specific type of object stored in each row.
+                    <pre><code>
+-- Example for TPH: Person and subclasses Student, Employee
+CREATE TABLE Persons (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Discriminator VARCHAR(50), -- 'Student' or 'Employee'
+    EnrollmentDate DATE,      -- Student specific
+    HireDate DATE             -- Employee specific
+);
+                    </code></pre>
+                </li>
+                <li><strong>Table Per Type (TPT):</strong> Each class in the inheritance hierarchy (including abstract base classes and derived classes) has its own table. Relationships between these tables are established using primary key/foreign key constraints.
+                    <pre><code>
+-- Example for TPT: Person, Student, Employee
+CREATE TABLE Persons (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(255)
+);
+
+CREATE TABLE Students (
+    Id INT PRIMARY KEY,
+    EnrollmentDate DATE,
+    FOREIGN KEY (Id) REFERENCES Persons(Id)
+);
+
+CREATE TABLE Employees (
+    Id INT PRIMARY KEY,
+    HireDate DATE,
+    FOREIGN KEY (Id) REFERENCES Persons(Id)
+);
+                    </code></pre>
+                </li>
+                <li><strong>Table Per Concrete Class (TPC):</strong> Each concrete (non-abstract) class in the hierarchy is mapped to its own table. This table contains all attributes of the class, including inherited ones, leading to some data duplication but simpler queries for specific types.</li>
+            </ul>
+        </section>
+
+        <!-- Task 10: Create and manipulate views tables (Create view, rename view, drop view) -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 10: Create and manipulate views tables</h2>
+            <p>A view is a virtual table based on the result-set of an SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation:</h3>
+
+            <h4>Create view 'AllGames':</h4>
+            <pre><code>
+USE sports;
+CREATE VIEW AllGames AS SELECT * FROM games;
+            </code></pre>
+
+            <h4>Extract all records from 'AllGames' view:</h4>
+            <pre><code>
+USE sports;
+SELECT * FROM AllGames;
+            </code></pre>
+
+            <h4>Extract details for Code 3 from the two tables (using views implicitly):</h4>
+            <pre><code>
+USE sports;
+SELECT * FROM games WHERE Code = 3;
+SELECT * FROM duties WHERE Code = 3;
+            </code></pre>
+
+            <h4>Extract records of athletics or basketball from games folder (using views implicitly):</h4>
+            <pre><code>
+USE sports;
+SELECT * FROM games WHERE Game = 'athletics' OR Game = 'basketball';
+            </code></pre>
+
+            <h4>Rename a view (Example: Renaming 'AllGames' to 'CurrentGames'):</h4>
+            <pre><code>
+-- SQL Server specific syntax for renaming a view
+USE sports;
+EXEC sp_rename 'AllGames', 'CurrentGames';
+            </code></pre>
+
+            <h4>Drop a view (Example: Dropping 'CurrentGames' view):</h4>
+            <pre><code>
+USE sports;
+DROP VIEW CurrentGames;
+            </code></pre>
+        </section>
+
+        <!-- Task 11 & 12 (Combined): Patient Database Management -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task 11 & 12: Patient Database Management</h2>
+            <p>This section covers creating a patient database, defining patient details and ailments, inserting records, and extracting specific information.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation:</h3>
+
+            <h4>Create 'patient' database and use it:</h4>
+            <pre><code>
+CREATE DATABASE patient;
+USE patient;
+            </code></pre>
+
+            <h4>Create 'pDetails' and 'pAilments' tables:</h4>
+            <pre><code>
+USE patient;
+CREATE TABLE pDetails (patNo INT PRIMARY KEY, name VARCHAR(255), gender CHAR(1), residence VARCHAR(255), age INT);
+CREATE TABLE pAilments (patNo INT, ailment VARCHAR(255), status VARCHAR(255), FOREIGN KEY (patNo) REFERENCES pDetails(patNo));
+            </code></pre>
+
+            <h4>Insert records into 'pDetails' and 'pAilments':</h4>
+            <pre><code>
+USE patient;
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4550, 'Neshe', 'M', 'Umoja', 34);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (4567, 'Mengo', 'F', 'Kajiado', 50);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (7894, 'Wira', 'F', 'Athi River', 45);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (5434, 'Elijah', 'F', 'Nakuru', 23);
+INSERT INTO pDetails (patNo, name, gender, residence, age) VALUES (3233, 'Mawingu', 'M', 'Limuru', 12);
+
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4550, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (4567, 'Typhoid', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (7894, 'TB', 'Mild');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (5434, 'Malaria', 'severe');
+INSERT INTO pAilments (patNo, ailment, status) VALUES (3233, 'TB', 'severe');
+            </code></pre>
+
+            <h4>Extract male patients from Umoja with Malaria:</h4>
+            <pre><code>
+USE patient;
+SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'M' AND p.residence = 'Umoja' AND a.ailment = 'Malaria';
+            </code></pre>
+
+            <h4>Extract female patients with Typhoid:</h4>
+            <pre><code>
+USE patient;
+SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE p.gender = 'F' AND a.ailment = 'Typhoid';
+            </code></pre>
+
+            <h4>Extract patients with Malaria or Typhoid:</h4>
+            <pre><code>
+USE patient;
+SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'Malaria' OR a.ailment = 'Typhoid';
+            </code></pre>
+
+            <h4>Extract patients with severe TB:</h4>
+            <pre><code>
+USE patient;
+SELECT p.name FROM pDetails p JOIN pAilments a ON p.patNo = a.patNo WHERE a.ailment = 'TB' AND a.status = 'severe';
+            </code></pre>
+
+            <h4>Create an index on 'patNo' in 'pDetails' table:</h4>
+            <pre><code>
+USE patient;
+CREATE INDEX idx_patNo ON pDetails (patNo);
+            </code></pre>
+        </section>
+
+        <!-- Task 2 (Student Database) - This was re-ordered to be after Patient for logical flow based on complexity -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold section-header">Task: Student Database Management (from original Task 2)</h2>
+            <p>This section covers creating a student database, defining student details and marks, inserting records, and performing calculations.</p>
+
+            <h3 class="text-xl font-medium mt-4 task-subsection">Practical Implementation:</h3>
+
+            <h4>Create 'Student' database and use it:</h4>
+            <pre><code>
+CREATE DATABASE Student;
+USE Student;
+            </code></pre>
+
+            <h4>Create 'stDetails' and 'stMarks' tables:</h4>
+            <pre><code>
+USE Student;
+CREATE TABLE stDetails (admNo INT PRIMARY KEY, Name VARCHAR(255), Gender CHAR(1), Address VARCHAR(255), Town VARCHAR(255), Class VARCHAR(255));
+CREATE TABLE stMarks (admNo INT PRIMARY KEY, Maths INT, Biology INT, Chemistry INT, Physics INT);
+            </code></pre>
+
+            <h4>Insert records into 'stDetails' and 'stMarks':</h4>
+            <pre><code>
+USE Student;
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2000, 'Janet', 'F', 'P.o.Box 100', 'Kitale', 'F4 South');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2001, 'Tabutany', 'F', 'P.0.Box 78', 'Eldoret', 'F4 North');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2002, 'Were', 'M', 'P.o.Box 201', 'Nakuru', 'F4 West');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2003, 'Mambu', 'M', 'P.o.Box 43', 'Eldoret', 'F4 East');
+INSERT INTO stDetails (admNo, Name, Gender, Address, Town, Class) VALUES (2004, 'Mercy', 'F', 'P.o.Box 20', 'Nakuru', 'F4 East');
+
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2000, 56, 45, 73, 66);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2001, 87, 54, 80, 55);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2002, 90, 78, 85, 74);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2003, 87, 67, 83, 62);
+INSERT INTO stMarks (admNo, Maths, Biology, Chemistry, Physics) VALUES (2004, 54, 72, 70, 68);
+            </code></pre>
+
+            <h4>Add 'Total' field to 'stMarks' table:</h4>
+            <pre><code>
+USE Student;
+ALTER TABLE stMarks ADD Total INT;
+            </code></pre>
+
+            <h4>Add 'Avg' field to 'stMarks' table:</h4>
+            <pre><code>
+USE Student;
+ALTER TABLE stMarks ADD Avg DECIMAL(10, 2);
+            </code></pre>
+
+            <h4>Calculate sum of marks and update 'Total':</h4>
+            <pre><code>
+USE Student;
+UPDATE stMarks SET Total = Maths + Biology + Chemistry + Physics;
+            </code></pre>
+
+            <h4>Calculate average marks and update 'Avg':</h4>
+            <pre><code>
+USE Student;
+UPDATE stMarks SET Avg = (Maths + Biology + Chemistry + Physics) / 4;
+            </code></pre>
+        </section>
+
+
+        <footer class="text-center mt-10 text-gray-600">
+            <p>&copy; 2025 Comprehensive Database Management Answers. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Check for saved theme preference on page load and apply dark mode if necessary
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+
+            // Apply dark mode if it was the last saved preference or if it's the default
+            if (savedTheme === 'dark' || savedTheme === null) { // Null means no preference, so default to dark
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark'); // Ensure 'dark' is explicitly saved if it's the default
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+        });
+    </script>
+</body>
+</html>
